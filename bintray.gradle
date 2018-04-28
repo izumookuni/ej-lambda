@@ -1,0 +1,45 @@
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId "${project.group}"
+            artifactId "${project.name}"
+            version "${project.version}"
+        }
+    }
+}
+
+bintray {
+    user = "${bintray_user}"
+    key = "${bintray_api_key}"
+    publications = ['MyPublication']
+    pkg {
+        repo = 'domovoi'
+        name = "${project.name}"
+        desc = 'Bring functional programming to java.'
+        licenses = ['LGPL-3.0']
+        vcsUrl = 'https://github.com/izumookuni/ej-lambda.git'
+        labels = ['lambda', 'functional programming']
+        githubRepo = "${github_user}/${project.name}"
+        version {
+            name = "${project.version}"
+            desc = 'Easy Java Lambda'
+            released = new Date()
+        }
+    }
+}
