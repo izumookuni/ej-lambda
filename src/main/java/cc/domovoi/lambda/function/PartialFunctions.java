@@ -1,4 +1,4 @@
-package cc.domovoi.ej.lambda.function;
+package cc.domovoi.lambda.function;
 
 import java.util.Collection;
 import java.util.Optional;

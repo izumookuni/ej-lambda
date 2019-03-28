@@ -1,8 +1,8 @@
-package cc.domovoi.ej.lambda.test;
+package cc.domovoi.lambda.test;
 
-import cc.domovoi.ej.lambda.function.MatchError;
-import cc.domovoi.ej.lambda.function.PartialFunction;
-import cc.domovoi.ej.lambda.function.PartialFunctions;
+import cc.domovoi.lambda.function.MatchError;
+import cc.domovoi.lambda.function.PartialFunction;
+import cc.domovoi.lambda.function.PartialFunctions;
 import org.junit.Assert;
 import org.junit.Test;
 

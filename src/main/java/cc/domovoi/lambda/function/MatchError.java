@@ -1,4 +1,4 @@
-package cc.domovoi.ej.lambda.function;
+package cc.domovoi.lambda.function;
 
 /**
  * This class implements errors which are thrown whenever an
