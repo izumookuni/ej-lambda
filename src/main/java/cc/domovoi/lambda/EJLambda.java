@@ -1,7 +1,6 @@
 package cc.domovoi.lambda;
 
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 public class EJLambda {
 
@@ -37,4 +36,15 @@ public class EJLambda {
         return (t) -> BYTE_ONE;
     }
 
+    public static <T> ToIntFunction<T> toIntValueOne() {
+        return (t) -> 1;
+    }
+
+    public static <T> ToDoubleFunction<T> toDoubleValueOne() {
+        return (t) -> 1.0;
+    }
+
+    public static <T> ToLongFunction<T> toLongValueOne() {
+        return (t) -> 1L;
+    }
 }

@@ -20,5 +20,25 @@ public class EJCollector {
         return groupingByCountFilter(classifier, EJLambda.predicateTrue());
     }
 
+    public static <T> Collector<T, ?, Integer> countingInt() {
+        return Collectors.summingInt(EJLambda.toIntValueOne());
+    }
+
+    public static <T> Collector<T, ?, Long> countingLong() {
+        return Collectors.summingLong(EJLambda.toLongValueOne());
+    }
+
+    public static <T, K1, K2, A, D> Collector<T, ?, Map<K1, Map<K2, D>>> groupingTwiceBy(Function<? super T, ? extends K1> classifier1,
+                                                                                         Function<? super T, ? extends K2> classifier2,
+                                                                                         Collector<? super T, A, D> downstream) {
+        return Collectors.groupingBy(classifier1, Collectors.groupingBy(classifier2, downstream));
+    }
+
+    public static <T, K1, K2, K3, A, D> Collector<T, ?, Map<K1, Map<K2, Map<K3, D>>>> groupingThriceBy(Function<? super T, ? extends K1> classifier1,
+                                                                                                       Function<? super T, ? extends K2> classifier2,
+                                                                                                       Function<? super T, ? extends K3> classifier3,
+                                                                                                       Collector<? super T, A, D> downstream) {
+        return Collectors.groupingBy(classifier1, Collectors.groupingBy(classifier2, Collectors.groupingBy(classifier3, downstream)));
+    }
 
 }
